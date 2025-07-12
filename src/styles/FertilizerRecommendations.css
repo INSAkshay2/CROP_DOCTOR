@@ -1,0 +1,40 @@
+.fertilizer-recommendations {
+  animation: fadeIn 0.6s ease-out;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recommendations-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.recommendations-header h1 {
+  font-size: 2.5rem;
+  color: #1b4332;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.recommendations-header p {
+  font-size: 1.1rem;
+  color: #2d5a3d;
+  margin: 0;
+}
+
+/* Recommendation Form Styles */
+.recommendation-form {
+  margin-bottom: 3rem;
+}
+
+.form-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #e8f5e8;
+  box-shadow: 0 8px 25px rgba(27, 67, 50, 0.1);
+}
+
+.form-card h3 {
+  color: #1b4332;
+}  

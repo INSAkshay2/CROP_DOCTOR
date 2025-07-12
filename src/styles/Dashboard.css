@@ -1,0 +1,108 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    #f8fff8 0%, 
+    #e8f5e8 25%, 
+    #ffffff 50%, 
+    #f0f8f0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(46, 125, 50, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(168, 230, 207, 0.05) 0%, transparent 50%);
+  animation: backgroundFloat 15s ease-in-out infinite;
+  z-index: 1;
+}
+
+.dashboard-main {
+  flex: 1;
+  margin-left: 280px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-main.collapsed {
+  margin-left: 80px;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: contentReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.5; 
+  }
+  33% { 
+    transform: translateY(-20px) rotate(120deg); 
+    opacity: 0.8; 
+  }
+  66% { 
+    transform: translateY(10px) rotate(240deg); 
+    opacity: 0.6; 
+  }
+}
+
+@keyframes contentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating particles for dashboard */
+.dashboard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="particles" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(46,125,50,0.1)"/><circle cx="75" cy="75" r="0.5" fill="rgba(76,175,80,0.1)"/><circle cx="50" cy="10" r="0.8" fill="rgba(168,230,207,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23particles)"/></svg>');
+  animation: particleMove 25s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes particleMove {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-100px) translateY(-100px); }
+}
+
+/* Responsive with enhanced animations */
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+    transform: translateX(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .dashboard-main.collapsed {
+    margin-left: 0;
+  }
+  
+  .dashboard-content {
+    padding: 1rem;
+  }
+}
